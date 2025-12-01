@@ -73,6 +73,45 @@ Displays a visual image of typing in 'Cybersecurity' into google.
 
 ---
 
+### 🔍 How the Password Strength Checker Works
+
+The password checker scores your password by looking at a few key things:
+
+**1. What characters you used**
+- lowercase letters  
+- UPPERCASE letters  
+- numbers  
+- symbols  
+
+More variety = more points.
+
+**2. How long it is**
+Longer passwords are harder to guess.
+
+**3. If it uses easy patterns**
+The app subtracts points for:
+- “123”, “abc”, “qwerty”
+- repeated letters (“aaa”, “111”)
+- passwords that look like dates (like 12252000)
+
+**4. If it contains common passwords**
+Anything like “password”, “welcome”, or “iloveyou” lowers the score a lot.
+
+**5. Final Score**
+All the good and bad points are added together and turned into a score:
+- 0–19 = Very Weak  
+- 20–39 = Weak  
+- 40–59 = Fair  
+- 60–79 = Strong  
+- 80–100 = Excellent  
+
+It also gives simple tips so the user knows exactly how to improve their password.
+
+All checking is done **locally** on your device and nothing is saved.
+
+
+---
+
 ## 🧰 Tech Stack
 
 - **Kotlin**
