@@ -36,7 +36,7 @@ The app includes non-technical explanations suitable for students, beginners, an
 - Password manager tips  
 
 ### 🖼 Cybersecurity Poster  
-Displays a visual image to reinforce safe practices (customizable via drawable resources).
+Displays a visual image of typing in 'Cybersecurity' into google. 
 
 ### 🚩 Phishing Red Flags
 - Identifying fake emails  
