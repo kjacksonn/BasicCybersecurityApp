@@ -73,41 +73,131 @@ Displays a visual image of typing in 'Cybersecurity' into google.
 
 ---
 
-### 🔍 How the Password Strength Checker Works
+````markdown
+## 🔍 How the Password Strength Checker Works (With Code Examples)
 
-The password checker scores your password by looking at a few key things:
+The Password Strength Checker looks at your password in simple steps.  
+Each step adds or subtracts points to decide the final score (0–100).  
+Here’s how it works, with real code examples from `PasswordStrength.kt`.
 
-**1. What characters you used**
-- lowercase letters  
-- UPPERCASE letters  
-- numbers  
-- symbols  
+---
+
+## 1️⃣ Step 1 — Check what the password contains
+
+The app checks if the password uses:
+- lowercase letters (a–z)
+- uppercase letters (A–Z)
+- numbers (0–9)
+- symbols (! @ # ?)
+- enough length
+
+```kotlin
+val length = pw.length
+val hasLower = pw.any { it.isLowerCase() }
+val hasUpper = pw.any { it.isUpperCase() }
+val hasDigit = pw.any { it.isDigit() }
+val hasSymbol = pw.any { !it.isLetterOrDigit() }
+````
 
 More variety = more points.
 
-**2. How long it is**
-Longer passwords are harder to guess.
+---
 
-**3. If it uses easy patterns**
-The app subtracts points for:
-- “123”, “abc”, “qwerty”
-- repeated letters (“aaa”, “111”)
-- passwords that look like dates (like 12252000)
+## 2️⃣ Step 2 — Give points for good habits
 
-**4. If it contains common passwords**
-Anything like “password”, “welcome”, or “iloveyou” lowers the score a lot.
+The app rewards stronger password choices:
 
-**5. Final Score**
-All the good and bad points are added together and turned into a score:
-- 0–19 = Very Weak  
-- 20–39 = Weak  
-- 40–59 = Fair  
-- 60–79 = Strong  
-- 80–100 = Excellent  
+```kotlin
+var complexityBonus = 0.0
 
-It also gives simple tips so the user knows exactly how to improve their password.
+if (hasLower && hasUpper) complexityBonus += 5
+if (hasDigit) complexityBonus += 5
+if (hasSymbol) complexityBonus += 7
+if (length >= 12) complexityBonus += 3
+```
 
-All checking is done **locally** on your device and nothing is saved.
+Longer, mixed-character passwords get higher scores.
+
+---
+
+## 3️⃣ Step 3 — Take away points for weak patterns
+
+The app subtracts points for predictable or simple patterns:
+
+```kotlin
+if (hasLongRepeat(pw)) complexityBonus -= 8
+if (hasSimpleSequence(pw)) complexityBonus -= 8
+if (looksLikeDate(pw)) complexityBonus -= 5
+```
+
+This catches:
+
+* repeated letters (aaa, 111)
+* easy sequences (abc, 123)
+* passwords that look like dates (12252000)
+
+---
+
+## 4️⃣ Step 4 — Detect super common passwords
+
+The app checks if the password contains extremely common patterns:
+
+```kotlin
+val lowerPw = pw.lowercase()
+val inCommonBase = commonBases.any { lowerPw.contains(it) }
+val inKeyboardRun = keyboardRuns.any { lowerPw.contains(it) }
+
+if (inCommonBase || inKeyboardRun) {
+    score = minOf(score, 20)
+}
+```
+
+Examples:
+
+* “password”
+* “qwerty”
+* “abc123”
+
+If it includes these, the score is capped low.
+
+---
+
+## 5️⃣ Step 5 — Create the final score and label
+
+The final score is built from:
+
+* good points
+* minus bad points
+* locked between 0 (weakest) and 100 (strongest)
+
+```kotlin
+var score = (randomnessPointsFromMath + complexityBonus)
+    .toInt()
+    .coerceIn(0, 100)
+```
+
+The score is then turned into a simple label:
+
+```kotlin
+val label = when (score) {
+    in 0..19 -> "Very Weak"
+    in 20..39 -> "Weak"
+    in 40..59 -> "Fair"
+    in 60..79 -> "Strong"
+    else      -> "Excellent"
+}
+```
+
+---
+
+## 📝 Summary (Simple English)
+
+* Good password habits **add** points
+* Weak patterns **subtract** points
+* Common passwords get forced to a low score
+* The final score becomes a clear color bar and a label
+* The checker gives tips on how to improve
+* Everything runs **locally on the device** (nothing saved)
 
 
 ---
