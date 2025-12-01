@@ -51,6 +51,27 @@ Displays a visual image of typing in 'Cybersecurity' into google.
 - Protecting accounts on shared computers  
 
 ---
+# 🔰 Screenshots
+
+## 🏠 Home Screen
+![Home Screen](screenshots/home.png)
+
+## 🔐 Password Strength Checker
+![Password Checker](screenshots/password_checker.png)
+
+## 🧠 How to Make a Strong Password
+![Strong Password Tips](screenshots/strong_password_tips.png)
+
+## 🖼 Cybersecurity Poster
+![Cybersecurity Poster](screenshots/cybersecurity_poster.png)
+
+## 🚩 Phishing Red Flags
+![Phishing Tips](screenshots/phishing_tips.png)
+
+## 🛡 Safe Browsing Tips
+![Safe Browsing](screenshots/safe_browsing.png)
+
+---
 
 ## 🧰 Tech Stack
 
