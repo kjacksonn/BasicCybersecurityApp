@@ -74,7 +74,7 @@ Displays a visual image of typing in 'Cybersecurity' into google.
 ---
 
 ````markdown
-## 🔍 How the Password Strength Checker Works (With Code Examples)
+## 🔍 How the Password Strength Checker Works 
 
 The Password Strength Checker looks at your password in simple steps.  
 Each step adds or subtracts points to decide the final score (0–100).  
@@ -190,7 +190,7 @@ val label = when (score) {
 
 ---
 
-## 📝 Summary (Simple English)
+## 📝 Summary
 
 * Good password habits **add** points
 * Weak patterns **subtract** points
@@ -211,7 +211,4 @@ val label = when (score) {
 - **Local password analysis engine**
 - **Android Studio (Electric Eel/Flamingo or later)**
 
----
-
-## 📂 Project Structure
 
